@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("slug");
-            $table->bigInteger("price");
+            $table->string("location");
+            $table->bigInteger("price_per_night");
             $table->string("hero_image");
             $table->longText("description");
             $table->enum("category", ["House", "Hotel", "Apartment"]);
