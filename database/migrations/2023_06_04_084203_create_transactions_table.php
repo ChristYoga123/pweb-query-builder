@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained();
             $table->foreignId("venue_id")->constrained();
             $table->integer("night");
+            $table->date("start_date");
+            $table->date("end_date");
             $table->string('payment_status')->default('waiting');
             $table->string('midtrans_url')->nullable();
             $table->string('midtrans_booking_code')->nullable();

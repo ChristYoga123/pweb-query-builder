@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\VenueController;
+use App\Http\Controllers\User\AuthController as UserAuthController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// User
+Route::get('/', [HomeController::class, "index"]);
+Route::get("/show", [HomeController::class, "show"]);
 
+// oAuth
+Route::get("login-google", [UserAuthController::class, "google"])->name("home.login.google.index");
+Route::get("/auth/google/callback", [UserAuthController::class, "handleProviderCallback"]);
+Route::post("logout", [UserAuthController::class, "logout"])->name("logout");
 // Admin
 // Non Auth
 Route::prefix("admin")->middleware("guest_admin")->name("admin.")->group(function () {
