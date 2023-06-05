@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,8 +21,21 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show()
+    public function show(Venue $venue)
     {
-        return view("pages.user.home.show");
+        return view("pages.user.home.show")->with([
+            "venue" => $venue
+        ]);
+    }
+
+    public function success()
+    {
+        return view("pages.user.home.success");
+    }
+
+    public function show_api($id)
+    {
+        $venue = DB::table("venues")->where("id", $id)->first();
+        return response()->json($venue);
     }
 }

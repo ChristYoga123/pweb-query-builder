@@ -29,11 +29,13 @@
             <div class="flex gap-5">
                 @forelse ($houses as $house)
                     <div class="flex flex-wrap flex-col">
-                        <img src="/storage/{{ $house->hero_image }}" class="rounded-lg" width="263px" height="180px">
-                        <div class="house-text mt-3">
-                            <p class="text-xl font-medium">{{ $house->name }}</p>
-                            <p class="text-sm text-[#B0B0B0] font-light">{{ $house->location }}, Indonesia</p>
-                        </div>
+                        <a href="{{ route("venue.show", $house->slug) }}">
+                            <img src="/storage/{{ $house->hero_image }}" class="rounded-lg" width="263px" height="180px">
+                            <div class="house-text mt-3">
+                                <p class="text-xl font-medium">{{ $house->name }}</p>
+                                <p class="text-sm text-[#B0B0B0] font-light">{{ $house->location }}, Indonesia</p>
+                            </div>
+                        </a>
                     </div>
                 @empty
                     <h1 class="text-xl font-bold">Tidak ada Data</h1>
@@ -46,11 +48,13 @@
             <div class="flex gap-5">
                 @forelse ($hotels as $hotel)
                     <div class="flex flex-wrap flex-col">
-                        <img src="/storage/{{ $hotel->hero_image }}" class="rounded-lg" width="263px" height="180px">
-                        <div class="house-text mt-3">
-                            <p class="text-xl font-medium">{{ $hotel->name }}</p>
-                            <p class="text-sm text-[#B0B0B0] font-light">{{ $hotel->location }}, Indonesia</p>
-                        </div>
+                        <a href="{{ route("venue.show", $hotel->slug) }}">
+                            <img src="/storage/{{ $hotel->hero_image }}" class="rounded-lg" width="263px" height="180px">
+                            <div class="house-text mt-3">
+                                <p class="text-xl font-medium">{{ $hotel->name }}</p>
+                                <p class="text-sm text-[#B0B0B0] font-light">{{ $hotel->location }}, Indonesia</p>
+                            </div>
+                        </a>
                     </div>
                 @empty
                     <h1 class="text-xl font-bold">Tidak ada Data</h1>
@@ -63,11 +67,13 @@
             <div class="flex gap-5">
                 @forelse ($apartments as $apartment)
                     <div class="flex flex-wrap flex-col">
-                        <img src="/storage/{{ $apartment->hero_image }}" class="rounded-lg" width="263px" height="180px">
-                        <div class="house-text mt-3">
-                            <p class="text-xl font-medium">{{ $apartment->name }}</p>
-                            <p class="text-sm text-[#B0B0B0] font-light">{{ $apartment->location }}, Indonesia</p>
-                        </div>
+                        <a href="{{ route("venue.show", $apartment->slug) }}">
+                            <img src="/storage/{{ $apartment->hero_image }}" class="rounded-lg" width="263px" height="180px">
+                            <div class="house-text mt-3">
+                                <p class="text-xl font-medium">{{ $apartment->name }}</p>
+                                <p class="text-sm text-[#B0B0B0] font-light">{{ $apartment->location }}, Indonesia</p>
+                            </div>
+                        </a>
                     </div>
                 @empty
                     <h1 class="text-xl font-bold">Tidak ada Data</h1>

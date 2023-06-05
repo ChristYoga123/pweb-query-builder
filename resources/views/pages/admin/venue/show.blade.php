@@ -25,21 +25,18 @@
             <div class="w-[400px] shadow-md py-12 px-16 flex flex-col gap-5 rounded-lg">
                 <h1 class="text-lg font-semibold">Start Booking</h1>
                 <h1><span class="text-2xl font-semibold text-green-500">Rp{{ $venue->price_per_night }} </span> <span class="text-2xl font-light">per night</span></h1>
-                <form action="{{ route("transaction.store", $venue->slug) }}" method="post">
-                    @csrf
-                    <div class="q1 flex flex-col gap-3">
-                        <h6 class="text-sm">How long will you stay?</h6>
-                        <input type="number" class="input w-full border border-gray-400" placeholder="Masukkan jumlah malam" onchange="changePriceData({{ $venue->id }})" name="night">
-                    </div>
-                    <div class="q2 flex flex-col gap-3">
-                        <h6 class="text-sm">Pick a date</h6>
-                        <input type="date" class="input w-full border border-gray-400" name="start_date">
-                        <h6 class="text-sm mx-auto">To</h6>
-                        <input type="date" class="input w-full border border-gray-400" name="end_date">
-                        <h6 class="text-sm text-[#B0B0B0]">You will pay <span id="price" class="text-[#152C5B] font-semibold"></span> per <span id="night" class="text-[#152C5B] font-semibold"></span></h6>
-                    </div>
-                    <button class="btn bg-[#3252DF] text-white">Continue to Book</button>
-                </form>
+                <div class="q1 flex flex-col gap-3">
+                    <h6 class="text-sm">How long will you stay?</h6>
+                    <input type="number" class="input w-full border border-gray-400" placeholder="Masukkan jumlah malam">
+                </div>
+                <div class="q2 flex flex-col gap-3">
+                    <h6 class="text-sm">Pick a date</h6>
+                    <input type="date" class="input w-full border border-gray-400">
+                    <h6 class="text-sm mx-auto">To</h6>
+                    <input type="date" class="input w-full border border-gray-400">
+                    <h6 class="text-sm text-[#B0B0B0]">You will pay <span id="price" class="text-[#152C5B] font-semibold">$ 420</span> per <span id="night" class="text-[#152C5B] font-semibold">2 nights</span></h6>
+                </div>
+                <button class="btn bg-[#3252DF] text-white">Continue to Book</button>
             </div>
         </div>
     </div>
@@ -60,21 +57,6 @@
     </div>
 
 @push('script')
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="crossorigin="anonymous"></script>
-<script>
-    function changePriceData(id)
-    {
-        $.ajax({
-            url: `http://127.0.0.1:8000/show/${id}/api`,
-            method: "GET",
-            dataType: "json",
-            success: function(data)
-            {
-                $("span#price").html("Rp" + data.price_per_night * $("input[type=number]").val() + ",-");
-                $("span#night").html($("input[type=number]").val() + " nights");
-            },
-        })
-    }
-</script>
+
 @endpush
 @endsection

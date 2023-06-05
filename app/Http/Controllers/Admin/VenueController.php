@@ -82,7 +82,9 @@ class VenueController extends Controller
      */
     public function show(Venue $venue)
     {
-        //
+        return view("pages.admin.venue.show")->with([
+            "venue" => $venue
+        ]);
     }
 
     /**
